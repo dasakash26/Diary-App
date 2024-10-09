@@ -1,3 +1,4 @@
+
 * {
   padding: 0;
   margin: 0;
@@ -9,7 +10,7 @@ html {
 }
 
 body {
-  background: #eee;
+  background: #e7f0dc;
   padding: 0 16px;
 }
 
@@ -37,25 +38,35 @@ header .bin{
 }
 
 footer {
-  position: absolute;
-  text-align: center;
+  position: fixed; 
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
   height: 2.5rem;
+  background-color: #e7f0dc;
 }
 
 footer p {
   color: #729762;
 }
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; 
+}
+
 .note {
-  background: #fff;
+  background: #e6f0da;
   border-radius: 7px;
   box-shadow: 0 2px 5px #ccc;
   padding: 10px;
-  width: 240px;
+  flex: 1 1 240px; 
   margin: 16px;
-  float: left;
 }
+
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
@@ -70,13 +81,21 @@ footer p {
 .note button {
   position: relative;
   float: right;
-  margin-right: 10px;
-  color: #658147;
+  margin: 0.5rem;
+  margin-top: 0;
+  border-radius: 50%;
+  color: #e7f0dc;
+  background-color: #658147;
   border: none;
   width: 36px;
   height: 36px;
   cursor: pointer;
   outline: none;
+}
+
+.note button:hover {
+  background-color: #729762;
+  transform: scale(1.1); 
 }
 
 form {
@@ -85,9 +104,11 @@ form {
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
+  padding-bottom: 50px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
 form input,
 form textarea {
   width: 100%;
@@ -98,6 +119,7 @@ form textarea {
   font-family: inherit;
   resize: none;
 }
+
 form button {
   position: absolute;
   right: 18px;
@@ -112,3 +134,72 @@ form button {
   cursor: pointer;
   outline: none;
 }
+
+form button:hover {
+  background-color: #729762;
+  transform: scale(1.1);
+}
+
+.bin-view {
+  margin: 20px 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bin-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items:center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.bin-message h2 {
+  font-size: 1.5em;
+  color: #597445;
+}
+
+.clear-bin-button {
+  background-color: #f85454;
+  color: white;
+  border: none;
+  margin: 1rem;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.clear-bin-button:hover {
+  background-color: #bc0303;
+}
+
+.bin-content {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 20px; 
+  width: 100%;
+  max-width: 800px;
+}
+
+.bin-note {
+  background: #f2f2f2;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 240px;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .note {
+    width: 100%; 
+  }
+}
+

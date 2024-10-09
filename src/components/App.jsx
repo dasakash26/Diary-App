@@ -47,16 +47,34 @@ function App() {
     setBin((prevBin) => prevBin.filter((note, index) => index !== id));
   };
 
+  const clearBin = () => {
+    if (window.confirm("Are you sure you want to clear the bin?")) {
+      setBin([]);
+    }
+  };
+
   return (
     <div>
-      <Header displayBin={displayBin} />
+      <Header displayBin={displayBin} status={binFlag} />
       {binFlag ? (
-        <>
-          <h2> {bin.length} items in bin...</h2>
-          {bin.map((note, index) => (
-            <Note key={index} id={index} note={note} deleteNote={restoreNote} />
-          ))}
-        </>
+        <div className="bin-view">
+          <div className="bin-message">
+            <h2>{bin.length} items in bin...</h2>
+            <button className="clear-bin-button" onClick={clearBin}>
+              Clear Bin
+            </button>
+          </div>
+          <div className="bin-notes">
+            {bin.map((note, index) => (
+              <Note
+                key={index}
+                id={index}
+                note={note}
+                deleteNote={restoreNote}
+              />
+            ))}
+          </div>
+        </div>
       ) : (
         <>
           <CreateArea addNote={addNote} />
@@ -65,6 +83,7 @@ function App() {
           ))}
         </>
       )}
+
       <Footer />
     </div>
   );
