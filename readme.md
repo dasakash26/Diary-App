@@ -32,27 +32,18 @@ src/
 - **State Management**: React's `useState` is utilized to manage the application's main states:
   - `notes`: The array storing the current active notes.
   - `bin`: The array storing the deleted notes.
-  - `binFlag`: A boolean flag used to toggle between displaying the main notes list and the contents of the bin.
-
-- **Adding Notes**: Notes are added to the `notes` state and subsequently saved to `localStorage`. If the title and content of the note are both empty, the note is not saved.
+    
+- **Adding Notes**: Notes are added to the `notes` state and saved to `localStorage`. If the title and content of the note are both empty, the note is not saved.
   
 - **Deleting Notes**: Instead of being permanently removed, deleted notes are moved to the bin and also stored in `localStorage`.
 
 - **Restoring Notes**: Users can restore notes from the bin, moving them back to the active notes section.
 
+- **Clear Bin**: clear bin in a single click
+
 ### Local Storage Integration
 
 The app leverages `localStorage` to ensure that notes and bin contents are retained even after a page reload or browser session restart. The `useEffect` hook is used to sync state changes with `localStorage`.
-
-```js
-useEffect(() => {
-  localStorage.setItem("notes", JSON.stringify(notes));
-}, [notes]);
-
-useEffect(() => {
-  localStorage.setItem("bin", JSON.stringify(bin));
-}, [bin]);
-```
 
 Upon loading, the app checks for existing data in `localStorage` and initializes the state accordingly.
 
